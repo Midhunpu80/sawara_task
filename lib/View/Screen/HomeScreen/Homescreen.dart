@@ -44,7 +44,7 @@ class Homescreen extends StatelessWidget {
                     dotWidth: 1.h,
                     dotHeight: 1.h,
                     dotColor: bl.withOpacity(0.3),
-                    activeDotColor: bl),
+                    activeDotColor: blr),
               ),
             ),
             SizedBox(

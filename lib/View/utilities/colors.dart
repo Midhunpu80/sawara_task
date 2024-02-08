@@ -16,6 +16,6 @@ Color or = Colors.orange;
 Color tr = Colors.transparent;
 Color pi = Colors.pink;
 Color gy = Colors.grey;
-Color blr = Color.fromARGB(255, 5, 0, 80);
+Color blr = Color.fromARGB(255, 8, 1, 103);
 
 Color blu = Colors.blue;

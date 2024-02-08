@@ -24,7 +24,7 @@ class bottomnavscreen extends StatelessWidget {
         bottomNavigationBar: BottomNavigationBar(
          unselectedLabelStyle: TextStyle(color: bl),
             selectedItemColor: blu,
-            unselectedItemColor: bl,
+            unselectedItemColor: blr,
             currentIndex: submit_controll.index.value,
             showUnselectedLabels: true,
             onTap: (value) {
