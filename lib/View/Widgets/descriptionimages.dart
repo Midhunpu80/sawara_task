@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:sawara_task/main.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:sizer/sizer.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:unicons/unicons.dart';
@@ -90,7 +91,13 @@ descritionimages() {
                   ),
                   const Icon(Icons.fullscreen),
                   const Icon(Icons.star_outline),
-                  const Icon(Icons.share)
+                InkWell(
+                  
+                  onTap: (){
+                     Share.share('Check out this amazing content!',
+                subject: 'Sharing content');
+                  },
+                  child: Container(child: Icon(Icons.share)))
                 ],
               )
             ],
