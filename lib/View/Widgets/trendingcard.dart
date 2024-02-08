@@ -35,7 +35,7 @@ trendingcard() {
                       decoration: BoxDecoration(
                           border: Border.all(
                             width: 1,
-                            color: blu,
+                            color: blr,
                           ),
                           borderRadius: BorderRadius.circular(36.w),
                           image: DecorationImage(
