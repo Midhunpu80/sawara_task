@@ -42,7 +42,7 @@ desTiltecard() {
         child: Row(
           children: [
             Icon(
-              Icons.lock_clock,
+              Icons.more_time_sharp,
               color: gy,
               size: 2.h,
             ),

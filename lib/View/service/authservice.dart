@@ -3,20 +3,22 @@
 import 'dart:convert';
 
 import 'package:crypto/crypto.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:sawara_task/View/utilities/Apiconfiguration/apiconfig.dart';
+import 'package:sawara_task/View/utilities/colors.dart';
 
 class signin_service extends GetxController {
   Apiconfig endpoint = Apiconfig();
 
   var isLoading = false.obs;
   Future signin({required var email, required var password}) async {
-    final pass = sha256.convert(utf8.encode(password)).toString();
+    final hashpass = sha256.convert(utf8.encode(password)).toString();
 
-    Map<String, dynamic> payload = {
+    final payload = {
       'Email': email.toString(),
-      'password': pass.toString(),
+      'password': hashpass.toString(),
       'grant_type': 'password',
     };
     final head = {
@@ -28,16 +30,20 @@ class signin_service extends GetxController {
     try {
       isLoading(true);
       final response = await http.post(
-          Uri.parse(
-              'https://apiv2stg.promilo.com/user/oauth/token?grant_type=password'),
+          Uri.parse(endpoint.signinUrl.toString().trim()),
           headers: head,
-          body: Uri.encodeQueryComponent(payload.toString()));
+          body: jsonEncode(payload));
       if (response.statusCode == 200) {
         var data = jsonDecode(response.body);
 
         print(
             "${data.toString()}---------------------sucesss------${response.statusCode}----->");
         isLoading(false);
+        if (response.statusCode == 401) {
+          Get.snackbar(
+              "Failed ${response.statusCode.toString()}", "Failed to Login",
+              backgroundGradient: LinearGradient(colors: [re, wh]));
+        }
       } else {
         print("failed ----->${response.statusCode}${response.body} ");
         isLoading(false);
